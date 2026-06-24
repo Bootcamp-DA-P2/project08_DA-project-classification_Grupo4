@@ -54,31 +54,36 @@ El pipeline del proyecto está configurado para generar y organizar de forma aut
 
 ```plaintext
 │
+├── 📁 assets/                                        # Recursos, imágenes...
+│
 ├── 📁 data/
-│   ├── dataset_clean.csv            # Tu dataset limpio histórico principal
-│   └── feedback_loans.csv           # El CSV de logs operativos (Fase 10)
+│   ├── dataset_clean.csv                              # Tu dataset limpio histórico principal
+│   ├──...  
+│   └── feedback_loans.csv                             # El CSV de logs operativos (Fase 10)
 │
 ├── 📁 models/
-│   ├── best_model.pkl               # Modelo definitivo en producción
-│   ├── model_metadata.json          # Hiperparámetros, métricas y features del framework
-│   └── preprocessor.pkl             # Transformaciones/Scalers si van desacoplados
-│
-├── 📁 notebooks/                    # Opcional: Para mover tus análisis fuera de la raíz
-│   ├── DA_project_classification_parte01_...
-│   └── DA_project_classification_parte02_...
+│   ├── best_model.pkl                                 # Modelo definitivo en producción
+│   ├── model_metadata.json                            # Hiperparámetros, métricas y features del framework
+│   ├──...
+│   └── preprocessor.pkl                               # Transformaciones/Scalers si van desacoplados
 │
 ├── 📁 scripts/
-│   └── export_model_comparison.py   # Script de ingeniería para generar el cuadro comparativo
+│   └── export_model_comparison.py                     # Script de ingeniería para generar el cuadro comparativo
 │
 ├── 📁 utils/
 │   ├── __init__.py
-│   └── predictor.py                 # Funciones lógicas de carga e inferencia (desacopladas)
+│   └── predictor.py                                   # Funciones lógicas de carga e inferencia (desacopladas)
 │
-├── 📄 .gitignore                    # Para evitar subir archivos .pkl o .csv pesados a GitHub
-├── 📄 app.py                        # Tu interfaz de usuario e interacción en Streamlit
+├── 📄 .dockerignore                                   # Archivos excluidos del contexto de construcción de Docker
+├── 📄 .gitignore                                      # Para evitar subir archivos .pkl o .csv pesados a GitHub
+├── 📄 app.py                                          # Tu interfaz de usuario e interacción en Streamlit
+├── 📄 DA_project_classification_parte01_Grupo4.ipynb  # Cuadernos interactivos de análisis y desarrollo
+├── 📄 DA_project_classification_parte02_Grupo4.ipynb  # Cuadernos interactivos de análisis y desarrollo
+├── 📄 docker-compose.yml                              # Orquestación local multi-contenedor del ecosistema
+├── 📄 Dockerfile                                      # Receta de construcción de la imagen de contenedor del proyecto
 ├── 📄 LICENSE
-├── 📄 README.md                     # Documentación técnica del proyecto
-└── 📄 requirements.txt              # Librerías necesarias (Streamlit, Pandas, Joblib...)
+├── 📄 README.md                                       # Documentación técnica del proyecto
+└── 📄 requirements.txt                                # Librerías necesarias (Streamlit, Pandas, Joblib...)
 ```
 
 

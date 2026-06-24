@@ -114,6 +114,27 @@ El entorno del proyecto utiliza principalmente las siguientes librerías de Pyth
 * **joblib** para la persistencia del modelo.
 
 ---
+## 🐳 Cómo Ejecutar el Proyecto con Docker
+
+Para facilitar el despliegue y asegurar que el entorno funcione exactamente igual en cualquier máquina, el proyecto está completamente contenedorizado. Sigue estos pasos para ponerlo en marcha:
+
+### Requisitos Previos
+* Tener instalado **Docker** y **Docker Compose** en tu sistema.
+
+### Instrucciones de Ejecución
+
+1. **Construir y levantar los contenedores:**
+   Ejecuta el siguiente comando en la raíz del proyecto para descargar las imágenes necesarias, construir el contenedor de la aplicación y levantarlo en segundo plano (`-d`):
+   ```bash
+   docker compose up --build -d```
+2. **Acceder a la aplicación:**
+   Una vez que el proceso termine con éxito, abre tu navegador web e ingresa a la siguiente dirección:
+   ```http://localhost:8501```
+3. **Detener el entorno:**
+   Si deseas parar y eliminar los contenedores que se están ejecutando, utiliza el comando:
+   ```bash
+   docker compose down``` 
+---
 
 ## 👥 Autores
 * Sonia Navarro

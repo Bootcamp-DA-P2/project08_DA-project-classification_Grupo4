@@ -53,13 +53,32 @@ El proyecto utiliza un conjunto de datos que cuenta con **5.000 solicitudes de p
 El pipeline del proyecto está configurado para generar y organizar de forma automática los siguientes directorios:
 
 ```plaintext
-├── data/                                   # Almacenamiento de datasets (original, limpio y final)
-├── models/                                 # Modelos entrenados y pipelines exportados (.joblib)
-├── assets/                                 # Gráficos generados (matrices de confusión, curvas ROC, etc.)
-├── DA_project_classification_parte01_Grupo4.ipynb   # Notebook de Auditoría, Limpieza y EDA
-└── DA_project_classification_parte02_Grupo4.ipynb   # Notebook de Modelado, Optimización y Exportación
-├── README.md
-├── requirements.txt
+│
+├── 📁 data/
+│   ├── dataset_clean.csv            # Tu dataset limpio histórico principal
+│   └── feedback_loans.csv           # El CSV de logs operativos (Fase 10)
+│
+├── 📁 models/
+│   ├── best_model.pkl               # Modelo definitivo en producción
+│   ├── model_metadata.json          # Hiperparámetros, métricas y features del framework
+│   └── preprocessor.pkl             # Transformaciones/Scalers si van desacoplados
+│
+├── 📁 notebooks/                    # Opcional: Para mover tus análisis fuera de la raíz
+│   ├── DA_project_classification_parte01_...
+│   └── DA_project_classification_parte02_...
+│
+├── 📁 scripts/
+│   └── export_model_comparison.py   # Script de ingeniería para generar el cuadro comparativo
+│
+├── 📁 utils/
+│   ├── __init__.py
+│   └── predictor.py                 # Funciones lógicas de carga e inferencia (desacopladas)
+│
+├── 📄 .gitignore                    # Para evitar subir archivos .pkl o .csv pesados a GitHub
+├── 📄 app.py                        # Tu interfaz de usuario e interacción en Streamlit
+├── 📄 LICENSE
+├── 📄 README.md                     # Documentación técnica del proyecto
+└── 📄 requirements.txt              # Librerías necesarias (Streamlit, Pandas, Joblib...)
 ```
 
 

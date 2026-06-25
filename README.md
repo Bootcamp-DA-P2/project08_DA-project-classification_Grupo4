@@ -53,13 +53,37 @@ El proyecto utiliza un conjunto de datos que cuenta con **5.000 solicitudes de p
 El pipeline del proyecto está configurado para generar y organizar de forma automática los siguientes directorios:
 
 ```plaintext
-├── data/                                   # Almacenamiento de datasets (original, limpio y final)
-├── models/                                 # Modelos entrenados y pipelines exportados (.joblib)
-├── assets/                                 # Gráficos generados (matrices de confusión, curvas ROC, etc.)
-├── DA_project_classification_parte01_Grupo4.ipynb   # Notebook de Auditoría, Limpieza y EDA
-└── DA_project_classification_parte02_Grupo4.ipynb   # Notebook de Modelado, Optimización y Exportación
-├── README.md
-├── requirements.txt
+│
+├── 📁 assets/                                        # Recursos, imágenes...
+│
+├── 📁 data/
+│   ├── dataset_clean.csv                              # Tu dataset limpio histórico principal
+│   ├──...  
+│   └── feedback_loans.csv                             # El CSV de logs operativos (Fase 10)
+│
+├── 📁 models/
+│   ├── best_model.pkl                                 # Modelo definitivo en producción
+│   ├── model_metadata.json                            # Hiperparámetros, métricas y features del framework
+│   ├──...
+│   └── preprocessor.pkl                               # Transformaciones/Scalers si van desacoplados
+│
+├── 📁 scripts/
+│   └── export_model_comparison.py                     # Script de ingeniería para generar el cuadro comparativo
+│
+├── 📁 utils/
+│   ├── __init__.py
+│   └── predictor.py                                   # Funciones lógicas de carga e inferencia (desacopladas)
+│
+├── 📄 .dockerignore                                   # Archivos excluidos del contexto de construcción de Docker
+├── 📄 .gitignore                                      # Para evitar subir archivos .pkl o .csv pesados a GitHub
+├── 📄 app.py                                          # Tu interfaz de usuario e interacción en Streamlit
+├── 📄 DA_project_classification_parte01_Grupo4.ipynb  # Cuadernos interactivos de análisis y desarrollo
+├── 📄 DA_project_classification_parte02_Grupo4.ipynb  # Cuadernos interactivos de análisis y desarrollo
+├── 📄 docker-compose.yml                              # Orquestación local multi-contenedor del ecosistema
+├── 📄 Dockerfile                                      # Receta de construcción de la imagen de contenedor del proyecto
+├── 📄 LICENSE
+├── 📄 README.md                                       # Documentación técnica del proyecto
+└── 📄 requirements.txt                                # Librerías necesarias (Streamlit, Pandas, Joblib...)
 ```
 
 
@@ -89,6 +113,27 @@ El entorno del proyecto utiliza principalmente las siguientes librerías de Pyth
 * **streamlit** para el despliegue de la interfaz de usuario.
 * **joblib** para la persistencia del modelo.
 
+---
+## 🐳 Cómo Ejecutar el Proyecto con Docker
+
+Para facilitar el despliegue y asegurar que el entorno funcione exactamente igual en cualquier máquina, el proyecto está completamente contenedorizado. Sigue estos pasos para ponerlo en marcha:
+
+### Requisitos Previos
+* Tener instalado **Docker** y **Docker Compose** en tu sistema.
+
+### Instrucciones de Ejecución
+
+1. **Construir y levantar los contenedores:**
+   Ejecuta el siguiente comando en la raíz del proyecto para descargar las imágenes necesarias, construir el contenedor de la aplicación y levantarlo en segundo plano (`-d`):
+   ```bash
+   docker compose up --build -d```
+2. **Acceder a la aplicación:**
+   Una vez que el proceso termine con éxito, abre tu navegador web e ingresa a la siguiente dirección:
+   ```http://localhost:8501```
+3. **Detener el entorno:**
+   Si deseas parar y eliminar los contenedores que se están ejecutando, utiliza el comando:
+   ```bash
+   docker compose down``` 
 ---
 
 ## 👥 Autores
